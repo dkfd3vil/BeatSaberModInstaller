@@ -22,7 +22,7 @@ namespace BeatSaberModInstaller
         public const string Git = "https://api.github.com/repos/";
         public const int ScoreSaberOculusDownloadID = 0;
         public const int ScoreSaberSteamDownloadID = 1;
-        public const Int16 CurrentVersion = 4;
+        public const Int16 CurrentVersion = 5;
         public List<ReleaseInfo> releases;
 
         public string InstallDirectory = @"";
@@ -269,7 +269,7 @@ namespace BeatSaberModInstaller
         private void CheckVersion()
         {
             UpdateStatus("Checking for updates...");
-            Int16 version = Convert.ToInt16(DownloadSite("https://raw.githubusercontent.com/Umbranoxio/BeatSaberModInstaller/master/update.txt"));
+            Int16 version = Convert.ToInt16(DownloadSite("https://raw.githubusercontent.com/dkfd3vil/BeatSaberModInstaller/master/update.txt"));
             if (version > CurrentVersion)
             {
                 this.Invoke((MethodInvoker)(() =>
