@@ -33,11 +33,12 @@
             this.buttonFolderBrowser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxMods = new System.Windows.Forms.GroupBox();
+            this.checkBoxProgressCounter = new System.Windows.Forms.CheckBox();
             this.radioButtonScoreSaberOculus = new System.Windows.Forms.RadioButton();
             this.radioButtonScoreSaberSteam = new System.Windows.Forms.RadioButton();
             this.checkBoxBeatSaver = new System.Windows.Forms.CheckBox();
             this.checkBoxSongLoader = new System.Windows.Forms.CheckBox();
-            this.buttonInstall = new System.Windows.Forms.Button();
+            this.buttonInstallUpdate = new System.Windows.Forms.Button();
             this.labelStatus = new System.Windows.Forms.Label();
             this.groupBoxMods.SuspendLayout();
             this.SuspendLayout();
@@ -71,22 +72,36 @@
             // 
             // groupBoxMods
             // 
+            this.groupBoxMods.Controls.Add(this.checkBoxProgressCounter);
             this.groupBoxMods.Controls.Add(this.radioButtonScoreSaberOculus);
             this.groupBoxMods.Controls.Add(this.radioButtonScoreSaberSteam);
             this.groupBoxMods.Controls.Add(this.checkBoxBeatSaver);
             this.groupBoxMods.Controls.Add(this.checkBoxSongLoader);
             this.groupBoxMods.Location = new System.Drawing.Point(10, 53);
             this.groupBoxMods.Name = "groupBoxMods";
-            this.groupBoxMods.Size = new System.Drawing.Size(362, 121);
+            this.groupBoxMods.Size = new System.Drawing.Size(362, 260);
             this.groupBoxMods.TabIndex = 3;
             this.groupBoxMods.TabStop = false;
             this.groupBoxMods.Text = "Mod to install";
+            // 
+            // checkBoxProgressCounter
+            // 
+            this.checkBoxProgressCounter.AutoSize = true;
+            this.checkBoxProgressCounter.Checked = true;
+            this.checkBoxProgressCounter.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxProgressCounter.Enabled = false;
+            this.checkBoxProgressCounter.Location = new System.Drawing.Point(6, 113);
+            this.checkBoxProgressCounter.Name = "checkBoxProgressCounter";
+            this.checkBoxProgressCounter.Size = new System.Drawing.Size(233, 17);
+            this.checkBoxProgressCounter.TabIndex = 5;
+            this.checkBoxProgressCounter.Text = "Ingame Progress Counter {0} - Strackeror";
+            this.checkBoxProgressCounter.UseVisualStyleBackColor = true;
             // 
             // radioButtonScoreSaberOculus
             // 
             this.radioButtonScoreSaberOculus.AutoSize = true;
             this.radioButtonScoreSaberOculus.Enabled = false;
-            this.radioButtonScoreSaberOculus.Location = new System.Drawing.Point(6, 90);
+            this.radioButtonScoreSaberOculus.Location = new System.Drawing.Point(15, 90);
             this.radioButtonScoreSaberOculus.Name = "radioButtonScoreSaberOculus";
             this.radioButtonScoreSaberOculus.Size = new System.Drawing.Size(290, 17);
             this.radioButtonScoreSaberOculus.TabIndex = 3;
@@ -99,7 +114,7 @@
             // 
             this.radioButtonScoreSaberSteam.AutoSize = true;
             this.radioButtonScoreSaberSteam.Enabled = false;
-            this.radioButtonScoreSaberSteam.Location = new System.Drawing.Point(6, 67);
+            this.radioButtonScoreSaberSteam.Location = new System.Drawing.Point(15, 67);
             this.radioButtonScoreSaberSteam.Name = "radioButtonScoreSaberSteam";
             this.radioButtonScoreSaberSteam.Size = new System.Drawing.Size(252, 17);
             this.radioButtonScoreSaberSteam.TabIndex = 2;
@@ -135,21 +150,21 @@
             this.checkBoxSongLoader.Text = "Song Loader (Required) {0} - xyonico";
             this.checkBoxSongLoader.UseVisualStyleBackColor = true;
             // 
-            // buttonInstall
+            // buttonInstallUpdate
             // 
-            this.buttonInstall.Enabled = false;
-            this.buttonInstall.Location = new System.Drawing.Point(297, 180);
-            this.buttonInstall.Name = "buttonInstall";
-            this.buttonInstall.Size = new System.Drawing.Size(75, 23);
-            this.buttonInstall.TabIndex = 4;
-            this.buttonInstall.Text = "Install";
-            this.buttonInstall.UseVisualStyleBackColor = true;
-            this.buttonInstall.Click += new System.EventHandler(this.buttonInstall_Click);
+            this.buttonInstallUpdate.Enabled = false;
+            this.buttonInstallUpdate.Location = new System.Drawing.Point(282, 319);
+            this.buttonInstallUpdate.Name = "buttonInstallUpdate";
+            this.buttonInstallUpdate.Size = new System.Drawing.Size(90, 30);
+            this.buttonInstallUpdate.TabIndex = 4;
+            this.buttonInstallUpdate.Text = "Install/Update";
+            this.buttonInstallUpdate.UseVisualStyleBackColor = true;
+            this.buttonInstallUpdate.Click += new System.EventHandler(this.buttonInstall_Click);
             // 
             // labelStatus
             // 
             this.labelStatus.AutoSize = true;
-            this.labelStatus.Location = new System.Drawing.Point(9, 185);
+            this.labelStatus.Location = new System.Drawing.Point(7, 339);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(66, 13);
             this.labelStatus.TabIndex = 5;
@@ -159,9 +174,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 211);
+            this.ClientSize = new System.Drawing.Size(384, 361);
             this.Controls.Add(this.labelStatus);
-            this.Controls.Add(this.buttonInstall);
+            this.Controls.Add(this.buttonInstallUpdate);
             this.Controls.Add(this.groupBoxMods);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonFolderBrowser);
@@ -190,8 +205,9 @@
         private System.Windows.Forms.RadioButton radioButtonScoreSaberSteam;
         private System.Windows.Forms.CheckBox checkBoxBeatSaver;
         private System.Windows.Forms.CheckBox checkBoxSongLoader;
-        private System.Windows.Forms.Button buttonInstall;
+        private System.Windows.Forms.Button buttonInstallUpdate;
         private System.Windows.Forms.Label labelStatus;
+        private System.Windows.Forms.CheckBox checkBoxProgressCounter;
     }
 }
 

@@ -20,9 +20,6 @@ namespace BeatSaberModInstaller
     {
 
         public const string Git = "https://api.github.com/repos/";
-        public const string Injector = "xyonico/BeatSaberSongInjector/releases";
-        public const string ScoreSaver = "andruzzzhka/BeatSaverDownloader/releases";
-        public const string ScoreSaber = "Umbranoxio/ScoreSaber/releases";
         public const int ScoreSaberOculusDownloadID = 0;
         public const int ScoreSaberSteamDownloadID = 1;
         public const Int16 CurrentVersion = 4;
@@ -51,16 +48,16 @@ namespace BeatSaberModInstaller
         {
             CheckVersion();
             UpdateStatus("Getting latest version info...");
-            ReleaseInfo injectorRelease = GetLatestRelease(1, Injector);
-            ReleaseInfo scoreSaverRelease = GetLatestRelease(0, ScoreSaver);
-            ReleaseInfo scoreSaberReleaseOculus = GetLatestRelease(ScoreSaberOculusDownloadID, ScoreSaber);
-            ReleaseInfo scoreSaberReleaseSteam = GetLatestRelease(ScoreSaberSteamDownloadID, ScoreSaber);
+            ReleaseInfo injectorRelease = GetLatestRelease(1, Plugins.Injector);
+            ReleaseInfo scoreSaverRelease = GetLatestRelease(0, Plugins.ScoreSaver);
+            ReleaseInfo scoreSaberReleaseOculus = GetLatestRelease(ScoreSaberOculusDownloadID, Plugins.ScoreSaber);
+            ReleaseInfo scoreSaberReleaseSteam = GetLatestRelease(ScoreSaberSteamDownloadID, Plugins.ScoreSaber);
+            ReleaseInfo progressCounter = GetLatestRelease(1, Plugins.ProgressCounter);
             releases.Add(injectorRelease);
             releases.Add(scoreSaverRelease);
             releases.Add(scoreSaberReleaseOculus);
             releases.Add(scoreSaberReleaseSteam);
-
-            string exampleToShowReleaseInfoContainsDownloadLinkAswell = injectorRelease.Link;
+            releases.Add(progressCounter);
 
             this.Invoke((MethodInvoker)(() =>
             {//Invoke so we can call from current thread
@@ -69,17 +66,19 @@ namespace BeatSaberModInstaller
                 checkBoxSongLoader.Text = string.Format(checkBoxSongLoader.Text, injectorRelease.Version);
                 radioButtonScoreSaberOculus.Text = string.Format(radioButtonScoreSaberOculus.Text, scoreSaberReleaseOculus.Version);
                 radioButtonScoreSaberSteam.Text = string.Format(radioButtonScoreSaberSteam.Text, scoreSaberReleaseSteam.Version);
+                checkBoxProgressCounter.Text = string.Format(checkBoxProgressCounter.Text, progressCounter.Version);
                 //Let the user use the controls as they where
                 checkBoxBeatSaver.Enabled = true;
                 radioButtonScoreSaberOculus.Enabled = true;
                 radioButtonScoreSaberSteam.Enabled = true;
+                checkBoxProgressCounter.Enabled = true;
 
                 if (!isSteam)
                 {
                     radioButtonScoreSaberOculus.Checked = true;
                 }
                 
-                buttonInstall.Enabled = true;
+                buttonInstallUpdate.Enabled = true;
             }));
             UpdateStatus("Release info updated!");
 
@@ -99,7 +98,7 @@ namespace BeatSaberModInstaller
             var downloadLink = downloadReleaseNode["browser_download_url"];
             Thread.Sleep(500); //So we don't get rate limited by github
 
-            if (downloadId == ScoreSaberOculusDownloadID && release == ScoreSaber)
+            if (downloadId == ScoreSaberOculusDownloadID && release == Plugins.ScoreSaber)
             {
                 return new ReleaseInfo(tagName, downloadLink, name, false);
             }
@@ -286,7 +285,7 @@ namespace BeatSaberModInstaller
         {
             this.Invoke((MethodInvoker)(() =>
                 {
-                    buttonInstall.Enabled = enabled;
+                    buttonInstallUpdate.Enabled = enabled;
                 }));
         }
         #endregion
@@ -417,7 +416,6 @@ namespace BeatSaberModInstaller
             }
         }
         #endregion
-
     }
 
 }
